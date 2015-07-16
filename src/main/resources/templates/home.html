@@ -14,6 +14,8 @@
 			<p>Thermostats!</p>
 
 			<p>TEMP: <span th:text="${tstat.temp}">98.6</span></p>
+			<p>FAN: <span th:text="${tstat.fstate}">ON</span> (<span th:text="${tstat.fmode}">AUTO</span>)</p>
+			<p>STATE: <span th:text="${tstat.tstate}">COOL</span> (<span th:text="${tstat.tmode}">COOL</span>)</p>
 		</div>
 	</body>
 </html>
