@@ -13,7 +13,13 @@
 
 			<p>Thermostats!</p>
 
-			<p>TEMP: <span th:text="${tstat.temp}">98.6</span></p>
+			<p>TEMP: <span th:text="${tstat.temp}">98.6</span>
+				(<span th:switch="${tstat.tmode.toString()}">
+					<span th:case="'OFF'">OFF</span>
+					<span th:case="'HEAT'" th:text="${tstat.t_heat}">68.0</span>
+					<span th:case="'COOL'" th:text="${tstat.t_cool}">72.0</span>
+					<span th:case="*">???</span>
+				</span>)</p>
 			<p>FAN: <span th:text="${tstat.fstate}">ON</span> (<span th:text="${tstat.fmode}">AUTO</span>)</p>
 			<p>STATE: <span th:text="${tstat.tstate}">COOL</span> (<span th:text="${tstat.tmode}">COOL</span>)</p>
 		</div>

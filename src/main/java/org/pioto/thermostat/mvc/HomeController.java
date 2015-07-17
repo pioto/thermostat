@@ -1,21 +1,29 @@
 package org.pioto.thermostat.mvc;
 
+import org.pioto.thermostat.devices.ThermostatDevice;
 import org.pioto.thermostat.rest.Tstat;
+import org.pioto.thermostat.services.ThermostatService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.client.RestTemplate;
 
 @Controller
 public class HomeController {
 	Logger logger = LoggerFactory.getLogger(getClass());
 
+	@Autowired
+	private ThermostatService thermostatService;
+
 	@RequestMapping("/")
 	public String home(Model model) {
-		RestTemplate restTemplate = new RestTemplate();
-		Tstat tstat = restTemplate.getForObject("http://thermostat/tstat", Tstat.class);
+		// TODO pull this from config or something...
+		// perhaps use Marvell Service Discovery Protocol?
+		ThermostatDevice dev = new ThermostatDevice("http://thermostat");
+
+		Tstat tstat = thermostatService.getTstat(dev);
 		logger.info("TSTAT: {}", tstat);
 
 		model.addAttribute(tstat);

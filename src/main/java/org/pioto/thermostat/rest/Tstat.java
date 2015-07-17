@@ -1,8 +1,8 @@
 package org.pioto.thermostat.rest;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import lombok.Data;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown=true)
