@@ -1,6 +1,7 @@
 package org.pioto.thermostat.services;
 
 import org.pioto.thermostat.devices.ThermostatDevice;
+import org.pioto.thermostat.rest.PostResult;
 import org.pioto.thermostat.rest.Tstat;
 
 /**
@@ -16,5 +17,12 @@ public interface ThermostatService {
 	 * @return
 	 */
 	Tstat getTstat(ThermostatDevice device);
+
+	/**
+	 * Post the given tstat struct to the thermostat, initiating a change in state.
+	 * @param tstat
+	 * @return
+	 */
+	PostResult postTstat(ThermostatDevice device, Tstat tstat);
 
 }
