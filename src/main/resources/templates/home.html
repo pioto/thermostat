@@ -25,6 +25,10 @@
 				data-toggle="toggle" data-on="ON" data-off="AUTO"
 				th:checked="${tstat.fmode.toString() == 'ON'}" />)</p>
 			<p>STATE: <span th:text="${tstat.tstate}">COOL</span> (<span th:text="${tstat.tmode}">COOL</span>)</p>
+
+			<p>UUID: <span th:text="${sys.uuid}">123456</span></p>
+			<p>API: <span th:text="${sys.api_version}">113</span></p>
+			<p>FW Version: <span th:text="${sys.fw_version}">1.0</span></p>
 		</div>
 
 		<script type="text/javascript">

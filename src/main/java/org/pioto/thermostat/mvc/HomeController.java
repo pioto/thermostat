@@ -1,6 +1,7 @@
 package org.pioto.thermostat.mvc;
 
 import org.pioto.thermostat.devices.ThermostatDevice;
+import org.pioto.thermostat.rest.Sys;
 import org.pioto.thermostat.rest.Tstat;
 import org.pioto.thermostat.services.ThermostatService;
 import org.slf4j.Logger;
@@ -26,7 +27,11 @@ public class HomeController {
 		Tstat tstat = thermostatService.getTstat(dev);
 		logger.info("TSTAT: {}", tstat);
 
+		Sys sys = thermostatService.getSys(dev);
+		logger.info("SYS: {}", sys);
+
 		model.addAttribute(tstat);
+		model.addAttribute(sys);
 
 		return "home";
 	}
