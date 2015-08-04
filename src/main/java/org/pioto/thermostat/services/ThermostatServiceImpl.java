@@ -2,6 +2,7 @@ package org.pioto.thermostat.services;
 
 import org.pioto.thermostat.devices.ThermostatDevice;
 import org.pioto.thermostat.rest.PostResult;
+import org.pioto.thermostat.rest.Sys;
 import org.pioto.thermostat.rest.Tstat;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,12 @@ public class ThermostatServiceImpl implements ThermostatService {
 	public PostResult postTstat(ThermostatDevice device, Tstat tstat) {
 		return restTemplate.postForObject(device.getBaseUrl() + "/tstat",
 				tstat, PostResult.class);
+	}
+
+	@Override
+	public Sys getSys(ThermostatDevice device) {
+		return restTemplate.getForObject(device.getBaseUrl() + "/sys",
+				Sys.class);
 	}
 
 }

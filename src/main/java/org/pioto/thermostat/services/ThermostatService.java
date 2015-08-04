@@ -2,6 +2,7 @@ package org.pioto.thermostat.services;
 
 import org.pioto.thermostat.devices.ThermostatDevice;
 import org.pioto.thermostat.rest.PostResult;
+import org.pioto.thermostat.rest.Sys;
 import org.pioto.thermostat.rest.Tstat;
 
 /**
@@ -24,5 +25,12 @@ public interface ThermostatService {
 	 * @return
 	 */
 	PostResult postTstat(ThermostatDevice device, Tstat tstat);
+
+	/**
+	 * Get general system information about the device.
+	 * @param device
+	 * @return
+	 */
+	Sys getSys(ThermostatDevice device);
 
 }
