@@ -17,7 +17,7 @@ public class LoggerJobs {
 	@Autowired
 	private ThermostatService thermostatService;
 
-	@Scheduled(fixedRate=60*60*1000)
+	@Scheduled(fixedRate=10*60*1000)
 	public void logTstat() {
 		// TODO pull this from config or something...
 		ThermostatDevice dev = new ThermostatDevice("http://thermostat");
