@@ -20,8 +20,21 @@
 					<span th:case="'COOL'" th:text="${tstat.t_cool}">72.0</span>
 					<span th:case="*">???</span>
 				</span>)</p>
-			<p>FAN: <span th:text="${tstat.fstate}">ON</span> (<span th:text="${tstat.fmode}">AUTO</span>)</p>
+			<p>FAN: <span th:text="${tstat.fstate}">ON</span> (<input
+				type="checkbox" id="fmode_toggle"
+				data-toggle="toggle" data-on="ON" data-off="AUTO"
+				th:checked="${tstat.fmode.toString() == 'ON'}" />)</p>
 			<p>STATE: <span th:text="${tstat.tstate}">COOL</span> (<span th:text="${tstat.tmode}">COOL</span>)</p>
 		</div>
+
+		<script type="text/javascript">
+			$(function() {
+				$("#fmode_toggle").on('change', function(event) {
+					if (this.checked) {
+
+					}
+				});
+			});
+		</script>
 	</body>
 </html>
