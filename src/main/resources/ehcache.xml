@@ -10,5 +10,6 @@
 
 	<cache name="tstat" maxEntriesLocalHeap="50" timeToLiveSeconds="10" />
 	<cache name="devices" maxEntriesLocalHeap="50" timeToLiveSeconds="300" />
+	<cache name="sys" maxEntriesLocalHeap="50" timeToLiveSeconds="300" />
 
 </ehcache>

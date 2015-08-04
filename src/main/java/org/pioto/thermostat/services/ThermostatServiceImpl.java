@@ -26,6 +26,7 @@ public class ThermostatServiceImpl implements ThermostatService {
 				tstat, PostResult.class);
 	}
 
+	@Cacheable("sys")
 	@Override
 	public Sys getSys(ThermostatDevice device) {
 		return restTemplate.getForObject(device.getBaseUrl() + "/sys",
