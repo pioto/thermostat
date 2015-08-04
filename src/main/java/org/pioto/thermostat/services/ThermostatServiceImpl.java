@@ -4,6 +4,7 @@ import org.pioto.thermostat.devices.ThermostatDevice;
 import org.pioto.thermostat.rest.PostResult;
 import org.pioto.thermostat.rest.Sys;
 import org.pioto.thermostat.rest.Tstat;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -20,6 +21,7 @@ public class ThermostatServiceImpl implements ThermostatService {
 				Tstat.class);
 	}
 
+	@CacheEvict("tstat")
 	@Override
 	public PostResult postTstat(ThermostatDevice device, Tstat tstat) {
 		return restTemplate.postForObject(device.getBaseUrl() + "/tstat",
