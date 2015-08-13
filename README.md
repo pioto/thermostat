@@ -1,4 +1,7 @@
 # thermostat
+
+[![Build Status](https://travis-ci.org/pioto/thermostat.svg)](https://travis-ci.org/pioto/thermostat)
+
 A little app to prototype experiments with my Radio Thermostat
 
 This is an app I've thrown together quickly with Spring Boot, in part just to play with some of its shiny looking
