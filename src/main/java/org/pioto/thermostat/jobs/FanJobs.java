@@ -3,6 +3,7 @@ package org.pioto.thermostat.jobs;
 import org.pioto.thermostat.devices.ThermostatDevice;
 import org.pioto.thermostat.rest.Fmode;
 import org.pioto.thermostat.rest.PostResult;
+import org.pioto.thermostat.rest.Tmode;
 import org.pioto.thermostat.rest.Tstat;
 import org.pioto.thermostat.services.ThermostatService;
 import org.slf4j.Logger;
@@ -26,16 +27,28 @@ public class FanJobs {
 
 	@Scheduled(cron="0 0 20 * * *")
 	public void autoFanOn() {
-		logger.info("Turning fan from AUTO to ON");
+		Tstat tstat = thermostatService.getTstat(getDevice());
 
-		setFanState(Fmode.ON);
+		if (tstat.getTmode().equals(Tmode.COOL)) {
+
+			logger.info("Turning fan from AUTO to ON");
+
+			setFanState(Fmode.ON);
+
+		}
 	}
 
 	@Scheduled(cron="0 0 8 * * *")
 	public void autoFanOff() {
-		logger.info("Turning fan from ON to AUTO");
+		Tstat tstat = thermostatService.getTstat(getDevice());
 
-		setFanState(Fmode.AUTO);
+		if (tstat.getTmode().equals(Tmode.COOL)) {
+
+			logger.info("Turning fan from ON to AUTO");
+
+			setFanState(Fmode.AUTO);
+
+		}
 	}
 
 	private void setFanState(Fmode fmode) {
@@ -44,8 +57,12 @@ public class FanJobs {
 
 		// TODO pull this from config or something...
 		// perhaps use Marvell Service Discovery Protocol?
-		ThermostatDevice dev = new ThermostatDevice("http://thermostat");
+		ThermostatDevice dev = getDevice();
 		PostResult result = thermostatService.postTstat(dev, tstat);
 		logger.info("Changed fan state: {}", result);
+	}
+
+	private ThermostatDevice getDevice() {
+		return new ThermostatDevice("http://thermostat");
 	}
 }
