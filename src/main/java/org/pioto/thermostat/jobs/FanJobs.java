@@ -38,7 +38,7 @@ public class FanJobs {
 		}
 	}
 
-	@Scheduled(cron="0 0 8 * * *")
+	@Scheduled(cron="0 0 6 * * *")
 	public void autoFanOff() {
 		Tstat tstat = thermostatService.getTstat(getDevice());
 
